@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("iner400.woff2?v=3.15") format("woff2"),
+       url("iner400.woff?v=3.15") format("woff");
+}
+
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("iner700.woff2?v=3.15") format("woff2"),
+       url("iner700.woff?v=3.15") format("woff");
+}

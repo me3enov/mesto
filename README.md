@@ -1,17 +1,24 @@
-# Проект 4: Место
+# Проект 4: Сервис Mesto
+## Описание проекта
+Создание адаптипного сайта с первым опытом применения JavaScript
 
-### Обзор
+#### Деплой на GitHub Pages:
 
-* Figma
-* Картинки
+https://me3enov.github.io/russian-travel/index.html
 
-**Figma**
+#### В этом проекте были использованны новые изученные технологии:
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
+* querySelector
+* addEventListener
+* classList
 
-**Картинки**
+#### Также использованны:
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+* БЭМ
+* Flex layout
+* Grid layout
+* Media querys
 
-Удачи!
+#### Проект сделан на HTML CSS JS:
+
+* Русский язык

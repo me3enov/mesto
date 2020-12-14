@@ -1,0 +1,53 @@
+.form__item-text {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box
+  display: inline-block;
+  border: 0;
+  height: 30px;
+  border-bottom: 1px solid #bcbcc4;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 17px;
+  font-style: normal;
+  font-weight: normal;
+  color: #000;
+  margin: 0 0 30px;
+  padding: 0;
+}
+
+.form__item-text:focus {
+  outline-color: rgb(0, 102, 255, .5);
+}
+
+.form__item-text::placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  font-style: normal;
+  font-weight: normal;
+  color: #c4c4c4;
+}
+
+.form__item-text::-webkit-input-placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  font-style: normal;
+  font-weight: normal;
+  color: #c4c4c4;
+}
+
+.form__item-text::-moz-placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  font-style: normal;
+  font-weight: normal;
+  color: #c4c4c4;
+}
+
+.form__item-text::-ms-input-placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  font-style: normal;
+  font-weight: normal;
+  color: #c4c4c4;
+}

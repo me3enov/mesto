@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--description-->
+  <meta name="description" content="Проектная работа 4 на Яндекс Практикуме">
+  <meta name="keywords" content="Фото, Лайки, Попап, Редактирование профиля, Сохранение, Html, CSS, JavaScript">
+  <meta name="author" content="Артем Мезенов">
+
+  <!--title-->
+  <title>Maestro Russia</title>
+
+  <!--build:css-->
+  <link rel="stylesheet" href="./pages/index.css">
+
+</head>
+<!--body start-->
+<body class="body">
+  <!--root start-->
+  <div class="root">
+    <!--header start-->
+    <header class="header">
+      <div class="header__content">
+        <a href="#" target="_self" class="header__logo" lang="ru"></a>
+      </div>
+    </header>
+    <!--header end-->
+
+    <!--content start-->
+    <main class="content">
+
+      <!--profile section start-->
+      <section class="profile">
+        <div class="profile__content">
+          <div class="profile__avatar"></div>
+          <div class="profile__line">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button"></button>
+          </div>
+          <p class="profile__job">Исследователь океана</p>
+          <button class="profile__add-button"></button>
+        </div>
+      </section>
+      <!--profile section start-->
+
+      <!--cards section start-->
+      <section class="cards" aria-label="Cards">
+        <div class="cards__content">
+          <!--gallery start-->
+          <ul  class="gallery">
+            <li class="gallery__item">
+              <div class="gallery__image gallery__image_background_karachaevsk"></div>
+              <h2 class="gallery__title">Карачаевск</h2>
+              <button class="gallery__like"></button>
+            </li>
+            <li class="gallery__item">
+              <div class="gallery__image gallery__image_background_elbrus"></div>
+              <h2 class="gallery__title">Гора Эльбрус</h2>
+              <button class="gallery__like"></button>
+            </li>
+            <li class="gallery__item">
+              <div class="gallery__image gallery__image_background_dombay"></div>
+              <h2 class="gallery__title">Домбай</h2>
+              <button class="gallery__like"></button>
+            </li>
+            <li class="gallery__item">
+              <div class="gallery__image gallery__image_background_elbrus"></div>
+              <h2 class="gallery__title">Гора Эльбрус</h2>
+              <button class="gallery__like"></button>
+            </li>
+            <li class="gallery__item">
+              <div class="gallery__image gallery__image_background_dombay"></div>
+              <h2 class="gallery__title">Домбай</h2>
+              <button class="gallery__like"></button>
+            </li>
+            <li class="gallery__item">
+              <div class="gallery__image gallery__image_background_karachaevsk"></div>
+              <h2 class="gallery__title">Карачаево-Черкессия</h2>
+              <button class="gallery__like"></button>
+            </li>
+          </ul>
+          <!--gallery end-->
+        </div>
+      </section>
+      <!--cards section end-->
+
+    </main>
+    <!--content end-->
+
+    <!--footer start-->
+    <footer class="footer" aria-label="Footer">
+      <div class="footer__content">
+        <p class="footer__copyright">© 2020. Артем Мезенов</p>
+      </div>
+    </footer>
+    <!--footer end-->
+
+    <!--popups start-->
+    <!--popup edit start-->
+    <div class="popup popup_place_edit">
+      <div class="popup__container">
+        <a href="#" target="_self" class="popup__close-button popup__close-button_place_edit"></a>
+        <form class="form form_place_edit">
+          <h2 class="form__title">Редактировать профиль</h2>
+          <fieldset class="form__input-container">
+            <input
+              class="form__item-text form__user-name"
+              type="text"
+              name="title"
+              placeholder="Имя">
+            <input
+              class="form__item-text form__user-job"
+              type="text"
+              name="title"
+              placeholder="О себе">
+            <button type="button" class="form__submit-button">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!--popup edit end-->
+    <!--popups end-->
+  </div>
+  <!--root end-->
+
+  <script src="scripts/profile.js"></script>
+</body>
+<!--body end-->
+</html>

@@ -1,0 +1,30 @@
+.gallery__like {
+  display: flex;
+  width: 20px;
+  height: 18px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background-image: url(../../../images/like.svg);
+  background-size: 20px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  margin: 0 20px 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  grid-row: 2/3;
+  grid-column: 2/3;
+  justify-self: end;
+  align-self: center;
+}
+
+.gallery__like:hover {
+  opacity: .6;
+  -webkit-transition: .4s;
+  -o-transition: .4s;transition: .4s;
+}
+
+.gallery__like:focus {
+  outline-color: rgb(0, 102, 255, .5);
+}
