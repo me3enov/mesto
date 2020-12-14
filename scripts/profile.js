@@ -3,6 +3,10 @@
 const editButton = document.querySelector('.profile__edit-button');
 const closeButtonEdit = document.querySelector('.popup__close-button_place_edit');
 
+//text content
+const profileName = document.querySelector('.profile__name');
+const profileJob = document.querySelector('.profile__job');
+
 //popups
 const popup = document.querySelector('.popup_place_edit');
 
@@ -27,8 +31,8 @@ btnSubmitEdit.addEventListener('click', EditFormSubmit);
 function openPopup() {
   popup.classList.add('popup_opened');
   //profile value
-  formElementName.value = document.querySelector('.profile__name').textContent;
-  formElementJob.value = document.querySelector('.profile__job').textContent;
+  formElementName.value = profileName.textContent;
+  formElementJob.value = profileJob.textContent;
 }
 
 //close popup edit profile
@@ -51,11 +55,11 @@ function EditFormSubmit (evt) {
   function setValuesProfile() {
     //set values
     if (isNaN(nameValue)) {
-      document.querySelector('.profile__name').textContent = nameValue;
+      profileName.textContent = nameValue;
       closePopup();
     }
     if (isNaN(jobValue)) {
-      document.querySelector('.profile__job').textContent = jobValue;
+      profileJob.textContent = jobValue;
       closePopup();
     }
   }
