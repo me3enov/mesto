@@ -30,5 +30,6 @@
 .header__logo:hover {
   opacity: .6;
   -webkit-transition: .4s;
-  -o-transition: .4s;transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
 }

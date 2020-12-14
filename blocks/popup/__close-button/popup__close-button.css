@@ -1,7 +1,7 @@
 .popup__close-button {
   display: flex;
   flex-shrink: 0;
-  align-self: flex-end ;
+  align-self: flex-end;
   position: absolute;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

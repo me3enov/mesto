@@ -13,7 +13,8 @@
 .profile__edit-button:hover {
   opacity: .6;
   -webkit-transition: .4s;
-  -o-transition: .4s;transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
 }
 
 @media screen and (max-width: 709px) {
