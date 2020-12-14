@@ -4,7 +4,7 @@
 
 #### Деплой на GitHub Pages:
 
-https://me3enov.github.io/russian-travel/index.html
+https://me3enov.github.io/mesto/index.html
 
 #### В этом проекте были использованны новые изученные технологии:
 
