@@ -12,8 +12,8 @@ let popup = document.querySelector('.popup');
 
 //form
 let formPlaceEdit = document.querySelector('.form');
-let formElementName = document.querySelector('.form_string-name');
-let formElementJob = document.querySelector('.form_string-job');
+let formElementName = document.querySelector('.form__item-text_string-name');
+let formElementJob = document.querySelector('.form__item-text_string-job');
 
 //form values
 let nameValue;
