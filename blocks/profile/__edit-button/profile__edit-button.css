@@ -46,6 +46,10 @@
   transition: .4s;
 }
 
-.profile__edit-button:active {
+.profile__edit-button:focus {
   outline: none;
+}
+
+.profile__edit-button:active {
+  border: 1px solid #fff;
 }
