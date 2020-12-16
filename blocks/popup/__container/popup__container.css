@@ -10,13 +10,11 @@
 @media screen and (max-width: 547px) {
   .popup__container {
     width: 282px;
-    height: 322px;
   }
 }
 
 @media screen and (min-width: 548px) {
   .popup__container {
     width: 430px;
-    height: 330px;
   }
 }

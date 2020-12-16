@@ -1,7 +1,5 @@
 .profile {
   display: grid;
-  grid-template-columns: repeat(2, minmax(min-content, max-content)) 1fr;
-  grid-template-rows: 100px 110px;
 }
 
 @media screen and (max-width: 709px) {
@@ -13,7 +11,7 @@
 
 @media screen and (min-width: 710px) {
   .profile {
-    grid-template-columns: repeat(3, minmax(min-content, max-content)) 1fr;
+    grid-template-columns: minmax(min-content, max-content) auto minmax(min-content, max-content);
     grid-template-rows: 100px 110px;
   }
 }

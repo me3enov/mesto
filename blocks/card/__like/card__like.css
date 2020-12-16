@@ -1,4 +1,4 @@
-.gallery__like {
+.card__like {
   display: flex;
   width: 20px;
   height: 18px;
@@ -19,13 +19,17 @@
   align-self: center;
 }
 
-.gallery__like:hover {
-  opacity: .6;
+.card__like:hover {
+  opacity: .5;
   -webkit-transition: .4s;
   -o-transition: .4s;
   transition: .4s;
 }
 
-.gallery__like:focus {
-  outline-color: rgb(0, 102, 255, .5);
+.card__like:focus {
+  outline: none;
+}
+
+.card__like:active {
+  background-image: url(../../../images/liked.svg);
 }

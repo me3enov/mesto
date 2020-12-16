@@ -1,9 +1,10 @@
-.gallery__title {
+.card__title {
   width: 100%;
   font-style: normal;
   line-height: 29px;
   font-size: 24px;
   font-weight: 900;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

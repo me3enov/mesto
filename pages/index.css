@@ -25,14 +25,18 @@
 
 /* cards */
 @import url(../blocks/cards/cards.css);
+
+/* gallery */
 @import url(../blocks/gallery/gallery.css);
-@import url(../blocks/gallery/__item/gallery__item.css);
-@import url(../blocks/gallery/__image/gallery__image.css);
-@import url(../blocks/gallery/__image/_background/gallery__image_background_karachaevsk.css);
-@import url(../blocks/gallery/__image/_background/gallery__image_background_dombay.css);
-@import url(../blocks/gallery/__image/_background/gallery__image_background_elbrus.css);
-@import url(../blocks/gallery/__title/gallery__title.css);
-@import url(../blocks/gallery/__like/gallery__like.css);
+
+/* card */
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__image/_background/card__image_background_karachaevsk.css);
+@import url(../blocks/card/__image/_background/card__image_background_dombay.css);
+@import url(../blocks/card/__image/_background/card__image_background_elbrus.css);
+@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__like/card__like.css);
 
 /* footer */
 @import url(../blocks/footer/__copyright/footer__copyright.css);

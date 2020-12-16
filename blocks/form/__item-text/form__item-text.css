@@ -4,8 +4,7 @@
   -webkit-box-sizing: border-box;
   display: flex;
   border: 0;
-  height: 30px;
-  border-bottom: 1px solid #bcbcc4;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   background-color: transparent;
   font-size: 14px;
   line-height: 17px;
@@ -13,11 +12,11 @@
   font-weight: normal;
   color: #000;
   margin: 0 0 30px;
-  padding: 0;
+  padding: 6px 0;
 }
 
 .form__item-text:focus {
-  outline-color: rgb(0, 102, 255, .5);
+  outline-color: rgba(0, 102, 255, .5);
 }
 
 .form__item-text::placeholder {

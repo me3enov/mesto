@@ -1,9 +1,8 @@
-.gallery__item {
+.card {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: 282px 79px;
   width: 282px;
-  height: 361px;
   overflow: hidden;
   border-radius: 10px;
   background-color: #fff;
