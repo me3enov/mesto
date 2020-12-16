@@ -23,6 +23,8 @@
   grid-column: 2/3;
   justify-self: end;
   align-self: center;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card__like:hover {
