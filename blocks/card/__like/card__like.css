@@ -1,9 +1,11 @@
 .card__like {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 20px;
   height: 18px;
-  box-sizing: border-box;
   -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-image: url(../../../images/like.svg);
   background-size: 20px 18px;
   background-repeat: no-repeat;
@@ -13,7 +15,11 @@
   padding: 0;
   border: 0;
   cursor: pointer;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
   grid-row: 2/3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
   grid-column: 2/3;
   justify-self: end;
   align-self: center;

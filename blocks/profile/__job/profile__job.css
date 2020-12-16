@@ -2,7 +2,7 @@
   font-style: normal;
   font-weight: normal;
   -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   color: #fff;
@@ -10,7 +10,10 @@
 
 @media screen and (max-width: 709px) {
   .profile__job {
+    -ms-grid-column: 1;
     grid-column: 1;
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
     grid-row: 3/4;
     font-size: 14px;
     line-height: 17px;
@@ -21,7 +24,11 @@
 
 @media screen and (min-width: 710px) {
   .profile__job {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
     grid-column: 2/3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
     grid-row: 1/3;
     font-size: 18px;
     line-height: 22px;

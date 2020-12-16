@@ -5,14 +5,20 @@
   font-size: 24px;
   font-weight: 900;
   -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   padding: 0 0 0 21px;
   margin: 0;
   color: #000;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
   grid-row: 2/3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
   grid-column: 1/2;
-  justify-self: start;
-  align-self: center;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  -ms-grid-row-align: center;
+      align-self: center;
 }

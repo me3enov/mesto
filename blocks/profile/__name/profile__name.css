@@ -2,7 +2,7 @@
   font-style: normal;
   font-weight: 500;
   -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   color: #fff;

@@ -10,6 +10,7 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -ms-font-feature-settings: "kern" 1;
-  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern";
+          font-feature-settings: "kern";
   background-color: #000;
 }
