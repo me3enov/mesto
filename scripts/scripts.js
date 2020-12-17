@@ -12,12 +12,8 @@ let popup = document.querySelector('.popup');
 
 //form
 let formPlaceEdit = document.querySelector('.form');
-let formElementName = document.querySelector('.form__item-text_string-name');
-let formElementJob = document.querySelector('.form__item-text_string-job');
-
-//form values
-let nameValue;
-let jobValue;
+let formElementName = document.querySelector('.form__item-text_string_name');
+let formElementJob = document.querySelector('.form__item-text_string_job');
 //objects end
 
 //functions start
@@ -37,12 +33,8 @@ function closePopup() {
 //submit form edit profile
 function editFormSubmit (evt) {
   evt.preventDefault();
-  //get values
-  nameValue = formElementName.value;
-  jobValue = formElementJob.value;
-  //set values
-  profileName.textContent = nameValue;
-  profileJob.textContent = jobValue;
+  profileName.textContent = formElementName.value;
+  profileJob.textContent = formElementJob.value;
   closePopup();
 }
 

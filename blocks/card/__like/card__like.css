@@ -40,4 +40,5 @@
 
 .card__like:active {
   background-image: url(../../../images/liked.svg);
+  opacity: 1;
 }
