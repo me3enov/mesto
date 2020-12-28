@@ -74,12 +74,12 @@ function createCard(titleValue = 'Место', linkValue = 'Ссылка') {
   //add listeners
   cardElement.querySelector('.card__bin').addEventListener('click', removeCard);
   cardElement.querySelector('.card__like').addEventListener('click', likeCard);
-  cardImage.addEventListener('click', ParamsImgPopup);
-  //add card to html
-  renderCard(cardElement);
+  cardImage.addEventListener('click', paramsImgPopup);
+  //add card to website
+  return (renderCard(cardElement));
 }
 
-//add card to html
+//add card to website
 function renderCard(cardElement) {
   gallery.prepend(cardElement);
 }
@@ -96,23 +96,21 @@ function likeCard(evt) {
 
 //open popups start
 function openPopUp(popup) {
-  //open popup
   popup.classList.add('popup_opened');
-  closeButton = popup.querySelector('.popup__close-button');
-  closeButton.addEventListener('click', closePopUp.bind(null, popup));
 }
 
-function ParamsEditPopup() {
+function paramsEditPopup() {
   formElementName.value = profileName.textContent;
   formElementJob.value = profileJob.textContent;
   openPopUp(popupEdit);
 }
 
-function ParamsImgPopup(evt) {
+function paramsImgPopup(evt) {
   //set profile value
   cardTitle = evt.target.closest('.card');
   imageDesc.textContent = cardTitle.textContent;
   imageFool.setAttribute('src', evt.target.style.backgroundImage.slice(5, -2));
+  //open image popup
   openPopUp(popupImg);
 }
 
@@ -133,8 +131,14 @@ function editProfile (evt) {
 //!!FUNCTIONS END!!
 
 //listeners start
-editButton.addEventListener('click', ParamsEditPopup);
-addButton.addEventListener('click', openPopUp.bind(null, popupAdd));
+//call popup buttons
+editButton.addEventListener('click', paramsEditPopup);
+addButton.addEventListener('click', () => openPopUp(popupAdd));
+//popup close buttons
+popupEdit.querySelector('.popup__close-button_place_edit').addEventListener('click', () => closePopUp(popupEdit));
+popupAdd.querySelector('.popup__close-button_place_add').addEventListener('click', () => closePopUp(popupAdd));
+popupImg.querySelector('.popup__close-button_place_img').addEventListener('click', () => closePopUp(popupImg));
+//form submit buttons
 formPlaceEdit.addEventListener('submit', editProfile);
 formPlaceAdd.addEventListener('submit', addCard);
 //listeners end
