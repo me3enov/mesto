@@ -1,0 +1,11 @@
+@media screen and (max-width: 709px) {
+  .root__header {
+    margin-top: 28px;
+  }
+}
+
+@media screen and (min-width: 710px) {
+  .root__header {
+    margin-top: 45px;
+  }
+}

@@ -1,0 +1,13 @@
+.gallery {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 282px);
+  grid-template-rows: repeat(auto-fill, 361px);
+  gap: 20px 17px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
