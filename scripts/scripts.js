@@ -1,12 +1,10 @@
-//VALUES START
-//objects start
+//GLOBAL SCOPE START
 //buttons
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 let closeButton;
 
 //popups
-let popup;
 const popupEdit = document.querySelector('.popup_place_edit');
 const popupAdd = document.querySelector('.popup_place_add');
 const popupImg = document.querySelector('.popup_place_img');
@@ -34,48 +32,18 @@ const formElementJob = document.querySelector('.form__item-text_string_job');
 const formPlaceAdd = document.querySelector('.form_place_add');
 const formElementTitle = document.querySelector('.form__item-text_string_title');
 const formElementLink = document.querySelector('.form__item-text_string_link');
-//objects end
-
-//cards info init start
-const initialCards = [
-  {
-    name: 'Стамбул',
-    link: './images/istanbul.jpg'
-  },
-  {
-    name: 'Сингапур',
-    link: './images/singapore.jpg'
-  },
-  {
-    name: 'Куала-Лумпур',
-    link: './images/kuala-lumpur.jpg'
-  },
-  {
-    name: 'Кемер',
-    link: './images/kemer.jpg'
-  },
-  {
-    name: 'Пхукет',
-    link: './images/phuket.jpg'
-  },
-  {
-    name: 'Саона',
-    link: './images/saona.jpg'
-  }
-];
-//cards info init end
-//VALUES END
+//GLOBAL SCOPE END
 
 //!!FUNCTIONS START!!
 //auto create cards start
 function createCards() {
   initialCards.forEach(function (element) {
     //set values card
-    let titleValue = element.name;
-    titleValue = titleValue.slice(0, 1).toUpperCase() + titleValue.slice(1);
-    let linkValue = element.link;
+    const titleValue = element.name;
+    const titleUppValue = titleValue.slice(0, 1).toUpperCase() + titleValue.slice(1);
+    const linkValue = element.link;
     //create card
-    createCard(titleValue, linkValue);
+    createCard(titleUppValue, linkValue);
   });
 }
 createCards();
@@ -84,16 +52,14 @@ createCards();
 function addCard (evt) {
   evt.preventDefault();
   //set cards values
-  let titleValue = document.querySelector('.form__item-text_string_title');
-  let titleUppValue = titleValue.value.slice(0, 1).toUpperCase() + titleValue.value.slice(1);
-  let linkValue = document.querySelector('.form__item-text_string_link');
+  const titleUppValue = formElementTitle.value.slice(0, 1).toUpperCase() + formElementTitle.value.slice(1);
   //create card
-  createCard(titleUppValue, linkValue.value)
+  createCard(titleUppValue, formElementLink.value)
   //reset forms
-  titleValue.value = '';
-  linkValue.value = '';
+  formElementTitle.value = '';
+  formElementTitle.value = '';
   //close popup
-  closePopUp();
+  closePopUp(popupAdd);
 }
 
 //create card
@@ -108,14 +74,19 @@ function createCard(titleValue = 'Место', linkValue = 'Ссылка') {
   //add listeners
   cardElement.querySelector('.card__bin').addEventListener('click', removeCard);
   cardElement.querySelector('.card__like').addEventListener('click', likeCard);
-  cardImage.addEventListener('click', openPopUp);
-  //insert card
+  cardImage.addEventListener('click', ParamsImgPopup);
+  //add card to html
+  renderCard(cardElement);
+}
+
+//add card to html
+function renderCard(cardElement) {
   gallery.prepend(cardElement);
 }
 
 //remove card
 function removeCard(evt) {
-  evt.target.parentElement.remove();
+  evt.target.closest('.card').remove();
 }
 
 //toggle like card
@@ -124,32 +95,29 @@ function likeCard(evt) {
 }
 
 //open popups start
-function openPopUp(evt) {
-  //open profile edit popup
-  if (evt.target.classList.contains('profile__edit-button')) {
-    popupEdit.classList.add('popup_opened');
-    //set profile value
-    formElementName.value = profileName.textContent;
-    formElementJob.value = profileJob.textContent;
-  }
-  //open add card popup
-  if (evt.target.classList.contains('profile__add-button')) {
-    popupAdd.classList.add('popup_opened');
-  }
-  //open image popup
-  if (evt.target.classList.contains('card__image')) {
-    popupImg.classList.add('popup_opened');
-    cardTitle = evt.target.closest('.card');
-    imageDesc.textContent = cardTitle.textContent;
-    imageFool.setAttribute('src', evt.target.style.backgroundImage.slice(5, -2));
-  }
-  popup = document.querySelector('.popup_opened');
+function openPopUp(popup) {
+  //open popup
+  popup.classList.add('popup_opened');
   closeButton = popup.querySelector('.popup__close-button');
-  closeButton.addEventListener('click', closePopUp);
+  closeButton.addEventListener('click', closePopUp.bind(null, popup));
+}
+
+function ParamsEditPopup() {
+  formElementName.value = profileName.textContent;
+  formElementJob.value = profileJob.textContent;
+  openPopUp(popupEdit);
+}
+
+function ParamsImgPopup(evt) {
+  //set profile value
+  cardTitle = evt.target.closest('.card');
+  imageDesc.textContent = cardTitle.textContent;
+  imageFool.setAttribute('src', evt.target.style.backgroundImage.slice(5, -2));
+  openPopUp(popupImg);
 }
 
 //close popups start
-function closePopUp(evt) {
+function closePopUp(popup) {
   popup.classList.remove('popup_opened');
 }
 
@@ -165,8 +133,8 @@ function editProfile (evt) {
 //!!FUNCTIONS END!!
 
 //listeners start
-editButton.addEventListener('click', openPopUp);
-addButton.addEventListener('click', openPopUp);
+editButton.addEventListener('click', ParamsEditPopup);
+addButton.addEventListener('click', openPopUp.bind(null, popupAdd));
 formPlaceEdit.addEventListener('submit', editProfile);
 formPlaceAdd.addEventListener('submit', addCard);
 //listeners end
