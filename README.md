@@ -1,6 +1,6 @@
-# Проект 4: Сервис Mesto
+# Проект 5: Сервис Mesto
 ## Описание проекта
-Создание адаптипного сайта с первым опытом применения JavaScript
+Доработка сервиса Mesto
 
 #### Деплой на GitHub Pages:
 
@@ -8,9 +8,13 @@ https://me3enov.github.io/mesto/index.html
 
 #### В этом проекте были использованны новые изученные технологии:
 
-* querySelector
-* addEventListener
-* classList
+* <template>
+* forEach
+* slice
+* toUpperCase
+* cloneNode
+* target
+* prepend
 
 #### Также использованны:
 
@@ -18,6 +22,10 @@ https://me3enov.github.io/mesto/index.html
 * Flex layout
 * Grid layout
 * Media querys
+* querySelector
+* addEventListener
+* classList
+* setAttribute
 
 #### Проект сделан на HTML CSS JS:
 

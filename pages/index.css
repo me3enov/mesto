@@ -28,15 +28,15 @@
 
 /* gallery */
 @import url(../blocks/gallery/gallery.css);
+@import url(../blocks/gallery/__message/gallery__message.css);
 
 /* card */
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__image/card__image.css);
-@import url(../blocks/card/__image/_background/card__image_background_karachaevsk.css);
-@import url(../blocks/card/__image/_background/card__image_background_dombay.css);
-@import url(../blocks/card/__image/_background/card__image_background_elbrus.css);
 @import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__bin/card__bin.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_state/card__like_state_liked.css);
 
 /* footer */
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -45,11 +45,21 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container/_place/popup__container_place_add.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__description/popup__description.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__close-button/_place/popup__close-button_place_add.css);
+@import url(../blocks/popup/__close-button/_place/popup__close-button_place_img.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__title/_place/form__title_place_add.css);
 @import url(../blocks/form/__input-container/form__input-container.css);
+@import url(../blocks/form/__input-container/_place/form__input-container_place_add.css);
 @import url(../blocks/form/__item-text/form__item-text.css);
+@import url(../blocks/form/__item-text/_place/form__item-text_place_add.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);
 
 /* root mix */
