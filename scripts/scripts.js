@@ -84,14 +84,14 @@ createCards();
 function addCard (evt) {
   evt.preventDefault();
   //set cards values
-  let titleValue = document.querySelector('.form__item-text_string_title').value;
-  titleValue = titleValue.slice(0, 1).toUpperCase() + titleValue.slice(1);
-  let linkValue = document.querySelector('.form__item-text_string_link').value;
+  let titleValue = document.querySelector('.form__item-text_string_title');
+  let titleUppValue = titleValue.value.slice(0, 1).toUpperCase() + titleValue.value.slice(1);
+  let linkValue = document.querySelector('.form__item-text_string_link');
   //create card
-  createCard(titleValue, linkValue)
+  createCard(titleUppValue, linkValue.value)
   //reset forms
-  document.querySelector('.form__item-text_string_title').value = '';
-  document.querySelector('.form__item-text_string_link').value = '';
+  titleValue.value = '';
+  linkValue.value = '';
   //close popup
   closePopUp();
 }
