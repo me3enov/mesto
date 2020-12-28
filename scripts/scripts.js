@@ -43,7 +43,8 @@ function createCards() {
     const titleUppValue = titleValue.slice(0, 1).toUpperCase() + titleValue.slice(1);
     const linkValue = element.link;
     //create card
-    createCard(titleUppValue, linkValue);
+    const card = createCard(titleUppValue, linkValue);
+    renderCard(card);
   });
 }
 createCards();
@@ -54,7 +55,8 @@ function addCard (evt) {
   //set cards values
   const titleUppValue = formElementTitle.value.slice(0, 1).toUpperCase() + formElementTitle.value.slice(1);
   //create card
-  createCard(titleUppValue, formElementLink.value)
+  const card = createCard(titleUppValue, formElementLink.value);
+  renderCard(card);
   //reset forms
   formElementTitle.value = '';
   formElementTitle.value = '';
@@ -76,12 +78,12 @@ function createCard(titleValue = 'Место', linkValue = 'Ссылка') {
   cardElement.querySelector('.card__like').addEventListener('click', likeCard);
   cardImage.addEventListener('click', paramsImgPopup);
   //add card to website
-  return (renderCard(cardElement));
+  return (cardElement);
 }
 
 //add card to website
-function renderCard(cardElement) {
-  gallery.prepend(cardElement);
+function renderCard(card) {
+  gallery.prepend(card);
 }
 
 //remove card
