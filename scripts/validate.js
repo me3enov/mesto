@@ -69,12 +69,12 @@ function toggleButtonState (inputList, buttonElement) {
   }
 }
 
-function clearValidation (popup) {
-  const currentInput = popup.querySelectorAll('.form__input');
+function clearValidation (popup, config) {
+  const currentInput = popup.querySelectorAll(config.inputSelector);
   currentInput.forEach((item) => {
-    item.classList.remove('form__input_type_error');
+    item.classList.remove(config.inputErrorClass);
     const currentElement = popup.querySelector(`#${item.id}-error`);
-    currentElement.classList.remove('form__input-error_active');
+    currentElement.classList.remove(config.errorClass);
     currentElement.textContent = '';
   })
 }

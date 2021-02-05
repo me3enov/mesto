@@ -105,11 +105,10 @@ function likeCard(evt) {
 }
 
 //open popups start
-function openPopUp(popup) {
+function openPopUp(popup, config) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  clearValidation(popup);
-  enableValidation(validationConfig);
+  clearValidation(popup, validationConfig);
 }
 
 function setParamsEditPopup() {
