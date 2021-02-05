@@ -26,12 +26,12 @@ const imageDesc = document.querySelector('.popup__description');
 //forms
 //edit profile
 const formPlaceEdit = document.querySelector('.form_place_edit');
-const formElementName = document.querySelector('.form__item-text_string_name');
-const formElementJob = document.querySelector('.form__item-text_string_job');
+const formElementName = document.querySelector('.form__input_string_name');
+const formElementJob = document.querySelector('.form__input_string_job');
 //add card
 const formPlaceAdd = document.querySelector('.form_place_add');
-const formElementTitle = document.querySelector('.form__item-text_string_title');
-const formElementLink = document.querySelector('.form__item-text_string_link');
+const formElementTitle = document.querySelector('.form__input_string_title');
+const formElementLink = document.querySelector('.form__input_string_link');
 //GLOBAL SCOPE END
 
 //!!FUNCTIONS START!!
@@ -52,16 +52,21 @@ createCards();
 //submit form add post
 function addCard (evt) {
   evt.preventDefault();
-  //set cards values
-  const titleUppValue = formElementTitle.value.slice(0, 1).toUpperCase() + formElementTitle.value.slice(1);
-  //create card
-  const card = createCard(titleUppValue, formElementLink.value);
-  renderCard(card);
-  //reset forms
-  formElementTitle.value = '';
-  formElementTitle.value = '';
-  //close popup
-  closePopUp(popupAdd);
+  //find current form
+  const currentForm = Array.from(formPlaceAdd.querySelectorAll(formItem.inputSelector));
+  //if valid
+  if(!hasInvalidInput(currentForm)) {
+    //set cards values
+    const titleUppValue = formElementTitle.value.slice(0, 1).toUpperCase() + formElementTitle.value.slice(1);
+    //create card
+    const card = createCard(titleUppValue, formElementLink.value);
+    renderCard(card);
+    //reset forms
+    formElementTitle.value = '';
+    formElementTitle.value = '';
+    //close popup
+    closePopUp(popupAdd);
+  }
 }
 
 //create card
@@ -99,6 +104,8 @@ function likeCard(evt) {
 //open popups start
 function openPopUp(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', closePopupOverlay);
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 function paramsEditPopup() {
@@ -119,16 +126,35 @@ function paramsImgPopup(evt) {
 //close popups start
 function closePopUp(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', closePopupOverlay);
+  document.removeEventListener('keydown', closePopupEsc);
+}
+
+function closePopupEsc(evt) {
+  if (evt.key === "Escape" || evt.key === "Esc") {
+    closePopUp(document.querySelector('.popup_opened'));
+  }
+}
+
+function closePopupOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopUp(document.querySelector('.popup_opened'));
+  }
 }
 
 //submit form edit profile
 function editProfile (evt) {
   evt.preventDefault();
-  //set profile values
-  profileName.textContent = formElementName.value.slice(0, 1).toUpperCase() + formElementName.value.slice(1);
-  profileJob.textContent = formElementJob.value.slice(0, 1).toUpperCase() + formElementJob.value.slice(1);
-  //close popup
-  closePopUp();
+  //find current form
+  const currentForm = Array.from(formPlaceEdit.querySelectorAll(formItem.inputSelector));
+  //if valid
+  if(!hasInvalidInput(currentForm)) {
+    //set profile values
+    profileName.textContent = formElementName.value.slice(0, 1).toUpperCase() + formElementName.value.slice(1);
+    profileJob.textContent = formElementJob.value.slice(0, 1).toUpperCase() + formElementJob.value.slice(1);
+    //close popup
+    closePopUp(document.querySelector('.popup_opened'));
+  }
 }
 //!!FUNCTIONS END!!
 
@@ -140,7 +166,4 @@ addButton.addEventListener('click', () => openPopUp(popupAdd));
 popupEdit.querySelector('.popup__close-button_place_edit').addEventListener('click', () => closePopUp(popupEdit));
 popupAdd.querySelector('.popup__close-button_place_add').addEventListener('click', () => closePopUp(popupAdd));
 popupImg.querySelector('.popup__close-button_place_img').addEventListener('click', () => closePopUp(popupImg));
-//form submit buttons
-formPlaceEdit.addEventListener('submit', editProfile);
-formPlaceAdd.addEventListener('submit', addCard);
 //listeners end

@@ -82,22 +82,28 @@
     <div class="popup popup_place_edit">
       <div class="popup__container">
         <button type="button" class="popup__close-button popup__close-button_place_edit"></button>
-        <form class="form form_place_edit" name="form__edit">
+        <form id="form_place_edit" class="form form_place_edit" name="form__edit" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
           <fieldset class="form__input-container">
             <input
-              class="form__item-text form__item-text_string_name"
+              id="form__input_string_name"
+              class="form__input form__input_string_name"
               name="name"
               type="text"
               placeholder="Имя"
+              minlength="2" maxlength="40"
               required>
+            <span id="error-name" class="form__input-error form__input_string_name-error"></span>
             <input
-              class="form__item-text form__item-text_string_job"
+              id="form__input_string_job"
+              class="form__input form__input_string_job"
               name="job"
               type="text"
               placeholder="О себе"
+              minlength="2" maxlength="200"
               required>
-            <button type="submit" class="form__submit-button">Сохранить</button>
+            <span id="error-job" class="form__input-error form__input_string_job-error"></span>
+            <button type="submit" class="form__submit-button form__submit-button_place_edit">Сохранить</button>
           </fieldset>
         </form>
       </div>
@@ -108,22 +114,27 @@
     <div class="popup popup_place_add">
       <div class="popup__container">
         <button type="button" class="popup__close-button popup__close-button_place_add"></button>
-        <form class="form form_place_add" name="form__add">
+        <form id="form_place_add" class="form form_place_add" name="form__add" novalidate>
           <h2 class="form__title form__title_place_add">Новое место</h2>
           <fieldset class="form__input-container">
             <input
-              class="form__item-text form__item-text_string_title"
+              id="form__input_string_title"
+              class="form__input form__input_string_title"
               type="text"
               name="title"
               placeholder="Название"
+              minlength="2" maxlength="30"
               required>
+            <span id="error-title" class="form__input-error form__input_string_title-error"></span>
             <input
-              class="form__item-text form__item-text_string_link"
+              id="form__input_string_link"
+              class="form__input form__input_string_link"
               type="url"
               name="link"
               placeholder="Ссылка на картинку"
               required>
-            <button type="submit" class="form__submit-button form__submit-button_add">Создать</button>
+            <span id="error-link" class="form__input-error form__input_string_link-error"></span>
+            <button type="submit" class="form__submit-button form__submit-button_place_add">Создать</button>
           </fieldset>
         </form>
       </div>
@@ -158,6 +169,7 @@
 
   <script src="scripts/data.js"></script>
   <script src="scripts/scripts.js"></script>
+  <script src="scripts/validate.js"></script>
 </body>
 <!--body end-->
 </html>
