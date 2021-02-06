@@ -108,13 +108,19 @@ function likeCard(evt) {
 function openPopUp(popup, config) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  clearValidation(popup, validationConfig);
 }
 
 function setParamsEditPopup() {
   formElementName.value = profileName.textContent;
   formElementJob.value = profileJob.textContent;
   openPopUp(popupEdit);
+  clearValidation(popupEdit, validationConfig);
+}
+
+function setParamsAddPopup() {
+  enableValidation(validationConfig);
+  openPopUp(popupAdd);
+  clearValidation(popupAdd, validationConfig);
 }
 
 function setParamsImgPopup(evt) {
@@ -169,7 +175,7 @@ enableCloseListeners();
 //listeners start
 //call popup buttons
 editButton.addEventListener('click', setParamsEditPopup);
-addButton.addEventListener('click', () => openPopUp(popupAdd));
+addButton.addEventListener('click', setParamsAddPopup);
 //forms submit
 formPlaceEdit.addEventListener('submit', editProfile);
 formPlaceAdd.addEventListener('submit', addCard);
