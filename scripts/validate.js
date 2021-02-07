@@ -90,10 +90,14 @@ function toggleButtonState (inputList, buttonElement, config) {
 
 //clear validation errors
 function clearValidation (popup, config) {
-  //array all input
-  const currentInput = popup.querySelectorAll(config.inputSelector);
+  //array all inputs
+  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
+  //submit button
+  const buttonElement = popup.querySelector(config.submitButtonSelector);
+  //toggle submit button state
+  toggleButtonState (inputList, buttonElement, config);
   //cycle for array inputs - clear validation errors in input
-  currentInput.forEach((item) => {
+  inputList.forEach((item) => {
     item.classList.remove(config.inputErrorClass);
     const currentElement = popup.querySelector(`#${item.id}-error`);
     currentElement.classList.remove(config.errorClass);

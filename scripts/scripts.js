@@ -118,7 +118,6 @@ function setParamsEditPopup() {
 }
 
 function setParamsAddPopup() {
-  enableValidation(validationConfig);
   openPopUp(popupAdd);
   clearValidation(popupAdd, validationConfig);
 }
