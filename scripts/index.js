@@ -1,9 +1,7 @@
 //GLOBAL SCOPE START
 
 //import modules
-import {data} from './data.js'
-import {Card} from './Card.js'
-import {FormValidator} from './FormValidator.js'
+import {data, Card, FormValidator} from './utils.js'
 
 //validation config for class FormValidator
 const configValidator = {
@@ -18,9 +16,6 @@ const configValidator = {
 
 //card config for "Card" class
 const configCard = {
-  popupSelector: document.querySelector('.popup_place_img'),
-  popupImgSelector: document.querySelector('.popup__image'),
-  popupCaptionSelector: document.querySelector('.popup__description'),
   templateSelector: '#card-template',
   cardSelector: '.card',
   titleSelector: '.card__title',
@@ -48,9 +43,6 @@ const cardList = document.querySelector('.gallery');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 
-//forms
-const formList = document.querySelectorAll(configValidator.formSelector);
-
 //edit profile
 const formPlaceEdit = document.querySelector('.form_place_edit');
 const formElementName = document.querySelector('.form__input_string_name');
@@ -62,27 +54,6 @@ const formElementLink = document.querySelector('.form__input_string_link');
 //GLOBAL SCOPE END
 
 //!!FUNCTIONS START!!
-//auto-rendering cards after loading page
-const renderCards = (items, config) => {
-  items.forEach((item) => {
-    //create new card
-    const card = new Card (item, config);
-    //fill in new card
-    const cardElement = card.generateCard();
-    //insert new card
-    cardList.append(cardElement);
-  });
-};
-renderCards(data, configCard);
-
-//enable forms validation
-function enableValidation () {
-  formList.forEach((formElement) => {
-    const form = new FormValidator (configValidator, formElement);
-    form.enableValidation();
-  });
-}
-enableValidation();
 
 //submit form add post
 function addCard (evt) {
@@ -121,19 +92,13 @@ function setParamsEditPopup() {
   formElementName.value = profileName.textContent;
   formElementJob.value = profileJob.textContent;
   openPopUp(popupEdit);
-  formList.forEach((formElement) => {
-    const form = new FormValidator (configValidator, formElement);
-    form.clearValidation(popupEdit);
-  });
+  formEdit.clearValidation(popupEdit);
 }
 
 //open popup add
 function setParamsAddPopup() {
   openPopUp(popupAdd);
-  formList.forEach((formElement) => {
-    const form = new FormValidator (configValidator, formElement);
-    form.clearValidation(popupAdd);
-  });
+  formAdd.clearValidation(popupAdd);
 }
 
 //close popups start
@@ -184,5 +149,19 @@ addButton.addEventListener('click', setParamsAddPopup);
 formPlaceEdit.addEventListener('submit', editProfile);
 formPlaceAdd.addEventListener('submit', addCard);
 //listeners end
+
+//auto-rendering cards after loading page
+const renderCards = (items) => {
+  items.forEach((item) => {
+    renderCard(item)
+  });
+};
+renderCards(data);
+
+//auto-enable forms validation
+const formEdit = new FormValidator (configValidator, formPlaceEdit);
+formEdit.enableValidation(popupEdit);
+const formAdd = new FormValidator (configValidator, formPlaceAdd);
+formAdd.enableValidation(popupAdd);
 
 export {popupImg};

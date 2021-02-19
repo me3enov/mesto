@@ -1,33 +1,33 @@
 //import modules
-import {openPopUp} from './index.js'
+import {openPopUp, popup, popupImg, popupImgCaption} from './utils.js'
 
 export class Card {
   //constructor for the "Card" class
-  constructor(cardSelector, config) {
-    this._cardSelector = cardSelector;
-    this._title = cardSelector.name;
-    this._image = cardSelector.link;
+  constructor(data, config) {
+    this.data = data;
+    this._title = data.name;
+    this._image = data.link;
 
     this._templateSelector = config.templateSelector;
-    this.cardSelector = config.cardSelector;
+    this._cardSelector = config.cardSelector;
     this._titleSelector = config.titleSelector;
     this._imageSelector = config.imageSelector;
     this._binBtnSelector = config.binBtnSelector;
     this._likeBtnSelector = config.likeBtnSelector;
     this._likedSelector = config.likedSelector;
 
-    this._popupSelector = config.popupSelector;
-    this._popupImgSelector = config.popupImgSelector;
-    this._popupCaptionSelector = config.popupCaptionSelector;
+    this._popup = popup;
+    this._popupImg = popupImg;
+    this._popupImgCaption = popupImgCaption;
   }
 
   //get template card from page
   _getTemplate() {
-    //card template
-    const cardTemplate = document.querySelector(this._templateSelector).content;
-    //clone card
-    const cardElement = cardTemplate.cloneNode(true);
-
+    const cardElement = document
+      .querySelector(this._templateSelector)
+      .content
+      .querySelector(this._cardSelector)
+      .cloneNode(true);
     return cardElement;
   }
 
@@ -37,8 +37,9 @@ export class Card {
   }
 
   //remove card
-  _removeCard(evt) {
-    evt.target.closest(this.cardSelector).remove();
+  _removeCard() {
+    this._element.remove();
+    this._element = null;
   }
 
   //toggle like card
@@ -49,15 +50,15 @@ export class Card {
   //open popup img
   _openImgPopup() {
     //set variables
-    this._popupImgSelector.src = this._image;
-    this._popupCaptionSelector.textContent = this._title;
+    this._popupImg.src = this._image;
+    this._popupImgCaption.textContent = this._title;
     //open image popup
-    openPopUp(this._popupSelector);
+    openPopUp(this._popup);
   }
 
   //set event listeners the "Card" class
   _setEventListeners() {
-    this._element.querySelector(this._binBtnSelector).addEventListener('click', (evt) => this._removeCard(evt));
+    this._element.querySelector(this._binBtnSelector).addEventListener('click', () => this._removeCard());
     this._element.querySelector(this._likeBtnSelector).addEventListener('click', (evt) => this._likeCard(evt));
 
     this._element.querySelector(this._imageSelector).addEventListener('click', () => this._openImgPopup());
