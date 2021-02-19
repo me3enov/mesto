@@ -1,5 +1,5 @@
-//cards info init start
-const initialCards = [
+//cards data init start
+export const data = [
   {
     name: 'Стамбул',
     link: './images/istanbul.jpg'
@@ -25,4 +25,4 @@ const initialCards = [
     link: './images/saona.jpg'
   }
 ];
-//cards info init end
+//cards data init end
