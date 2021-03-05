@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!--browser-->
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- This project can't have be found by other students-->
+  <meta name="robots" content="noindex"/>
+
+  <!--icon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="<%=require('./images/favicon/apple-touch-icon.png')%>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%=require('./images/favicon/favicon-32x32.png')%>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%=require('./images/favicon/favicon-16x16.png')%>">
+  <link rel="manifest" href="<%=require('./images/favicon/site.webmanifest')%>">
+  <link rel="mask-icon" href="<%=require('./images/favicon/safari-pinned-tab.svg')%>" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <!--description-->
+  <meta name="description" content="Сервис Mesto">
+  <meta name="subject" content="Публикация изображений" >
+  <meta name="keywords" content="Mesto, Фото, Лайки, Попап, Редактирование профиля, Сохранение, Создание карточек, Удаление карточек, Открыть картинку, Html, CSS, JavaScript">
+  <meta name="author" content="Артем Мезенов">
+  <link rel="me" href="mailto:art.mezenow@yandex.ru">
+
+  <!--title-->
+  <title>Mesto</title>
+
+</head>
+<!--body start-->
+<body class="body">
+  <!--root start-->
+  <div class="root">
+    <!--header start-->
+    <header class="header root__header">
+      <a href="#" target="_self" class="header__logo"></a>
+    </header>
+    <!--header end-->
+
+    <!--content start-->
+    <main class="content">
+
+      <!--profile section start-->
+      <section class="profile root__profile">
+        <div class="profile__avatar"></div>
+        <div class="profile__line">
+          <h1 class="profile__name">Артем Мезенов</h1>
+          <button type="button" class="profile__edit-button"></button>
+        </div>
+        <p class="profile__job">Исследователь жизни</p>
+        <button type="button" class="profile__add-button"></button>
+      </section>
+      <!--profile section start-->
+
+      <!--cards section start-->
+      <section class="cards" aria-label="Cards">
+        <!--if JS disable-->
+        <noscript class="cards__message">Для корректной работы сайта необходимо подключить JavaScript</noscript >
+        <!--gallery start-->
+        <ul class="gallery">
+          <!-- gallery template data is included here -->
+        </ul>
+        <!--gallery end-->
+      </section>
+      <!--cards section end-->
+
+    </main>
+    <!--content end-->
+
+    <!--footer start-->
+    <footer class="footer root__footer" aria-label="Footer">
+      <p class="footer__copyright">&copy; 2020. Артем Мезенов</p>
+    </footer>
+    <!--footer end-->
+
+    <!--popups start-->
+    <!--popup edit start-->
+    <div class="popup popup_place_edit">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button popup__close-button_place_edit"></button>
+        <form id="form_place_edit" class="form form_place_edit" name="form__edit" novalidate>
+          <h2 class="form__title">Редактировать профиль</h2>
+          <fieldset class="form__input-container">
+            <input
+              id="form__input_string_name"
+              class="form__input form__input_string_name"
+              name="name"
+              type="text"
+              placeholder="Имя"
+              minlength="2" maxlength="40"
+              required>
+            <span id="form__input_string_name-error" class="form__input-error"></span>
+            <input
+              id="form__input_string_job"
+              class="form__input form__input_string_job"
+              name="job"
+              type="text"
+              placeholder="О себе"
+              minlength="2" maxlength="200"
+              required>
+            <span id="form__input_string_job-error" class="form__input-error"></span>
+            <button type="submit" class="form__submit-button form__submit-button_place_edit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!--popup edit end-->
+
+    <!--popup add start-->
+    <div class="popup popup_place_add">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button popup__close-button_place_add"></button>
+        <form id="form_place_add" class="form form_place_add" name="form__add" novalidate>
+          <h2 class="form__title form__title_place_add">Новое место</h2>
+          <fieldset class="form__input-container">
+            <input
+              id="form__input_string_title"
+              class="form__input form__input_string_title"
+              type="text"
+              name="title"
+              placeholder="Название"
+              minlength="2" maxlength="30"
+              required>
+            <span id="form__input_string_title-error" class="form__input-error"></span>
+            <input
+              id="form__input_string_link"
+              class="form__input form__input_string_link"
+              type="url"
+              name="link"
+              placeholder="Ссылка на картинку"
+              required>
+            <span id="form__input_string_link-error" class="form__input-error"></span>
+            <button type="submit" class="form__submit-button form__submit-button_place_add">Создать</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!--popup add end-->
+
+    <!--popup img start-->
+    <div class="popup popup_place_img">
+      <div class="popup__image-container">
+        <button type="button" class="popup__close-button popup__close-button_place_img"></button>
+        <figure class="popup__figure">
+          <img class="popup__image" alt="Фото" src="<%=require('./images/564x564.png')%>">
+          <figcaption class="popup__description">Место</figcaption>
+        </figure>
+      </div>
+    </div>
+    <!--popup img end-->
+    <!--popups end-->
+  </div>
+  <!--root end-->
+
+  <!-- gallery template start-->
+  <template id="card-template">
+    <li class="card">
+      <div class="card__image"></div>
+      <button class="card__bin"></button>
+      <h2 class="card__title">Место</h2>
+      <button class="card__like"></button>
+    </li>
+  </template>
+  <!-- gallery template end-->
+
+</body>
+<!--body end-->
+</html>
