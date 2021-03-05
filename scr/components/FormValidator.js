@@ -12,7 +12,7 @@ export class FormValidator {
   }
 
   //show validation error in input
-  _showInputError = (inputElement, errorMessage) => {
+  _showInputError (inputElement, errorMessage) {
     const errorElement = this._form.querySelector(`#${inputElement.id+this._errorPrefix}`);
       inputElement.classList.add(this._inputErrorClass);
       errorElement.textContent = errorMessage;
@@ -20,7 +20,7 @@ export class FormValidator {
   };
 
   //hide validation error in input
-  _hideInputError = (inputElement) => {
+  _hideInputError (inputElement) {
     const errorElement = this._form.querySelector(`#${inputElement.id+this._errorPrefix}`);
       inputElement.classList.remove(this._inputErrorClass);
       errorElement.classList.remove(this._errorClass);
@@ -35,7 +35,7 @@ export class FormValidator {
   }
 
   //check input
-  _checkInputValidity = (inputElement) => {
+  _checkInputValidity (inputElement) {
     //if not valid
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
