@@ -9,6 +9,14 @@ export class PopupWithForm extends Popup {
     this._settings = settings;
     this._form = this._popup.querySelector(this._settings.extend.formSelector);
     this._submit = this._settings.submit;
+    this._submitEvtHandler = this._submitEvtHandler.bind(this);
+  }
+
+  //if submit evt handler
+  _submitEvtHandler(evt) {
+    evt.preventDefault();
+    this._submit(this._getInputValues());
+    this.close();
   }
 
   //get input values
@@ -31,10 +39,6 @@ export class PopupWithForm extends Popup {
   //set event listeners "PopupWithForm" class popup
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      this._submit(this._getInputValues());
-      this.close();
-    });
+    this._form.addEventListener('submit', this._submitEvtHandler);
   }
 }

@@ -67,10 +67,9 @@ export class FormValidator {
     //submit button
     this._buttonElement = this._form.querySelector(this._submitButtonSelector);
     //toggle submit button state
-    this._toggleButtonState (this.inputList);
+    this._toggleButtonState();
     //cycle for array inputs - clear validation errors in input
     this._inputList.forEach(item => this._hideInputError(item));
-    this._toggleButtonState();
   }
 
   //set event listeners in inputs

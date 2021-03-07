@@ -37,18 +37,18 @@ const popupEdit = new PopupWithForm({
   selector: popups.popupEditSelector,
   config: configPopup,
   extend: configPopupWithForm,
-  submit: () => {
-  }
+  submit: editProfile
 });
+popupEdit.setEventListeners();
 
 //popupAdd init
 const popupAdd = new PopupWithForm({
   selector: popups.popupAddSelector,
   config: configPopup,
   extend: configPopupWithForm,
-  submit: () => {
-  }
+  submit: addCard
 });
+popupAdd.setEventListeners();
 
 //popupImg init
 const popupImg = new PopupWithImage({
@@ -56,6 +56,7 @@ const popupImg = new PopupWithImage({
   config: configPopup,
   extend: configPopupWithImage
 });
+popupImg.setEventListeners();
 
 //cards init
 const cards = new Section({
@@ -101,8 +102,6 @@ function addCard () {
 cards.renderItems(data);
 
 //LISTENER INIT START
-formPlaceEditItem.addEventListener('submit', editProfile);
-formPlaceAddItem.addEventListener('submit', addCard);
 //call edit popup button
 editButtonItem.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
