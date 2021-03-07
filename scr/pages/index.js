@@ -38,7 +38,6 @@ const popupEdit = new PopupWithForm({
   config: configPopup,
   extend: configPopupWithForm,
   submit: () => {
-    formPlaceEditItem.addEventListener('submit', editProfile);
   }
 });
 
@@ -48,7 +47,6 @@ const popupAdd = new PopupWithForm({
   config: configPopup,
   extend: configPopupWithForm,
   submit: () => {
-    formPlaceAddItem.addEventListener('submit', addCard);
   }
 });
 
@@ -103,6 +101,8 @@ function addCard () {
 cards.renderItems(data);
 
 //LISTENER INIT START
+formPlaceEditItem.addEventListener('submit', editProfile);
+formPlaceAddItem.addEventListener('submit', addCard);
 //call edit popup button
 editButtonItem.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
