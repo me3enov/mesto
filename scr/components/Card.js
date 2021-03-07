@@ -26,9 +26,9 @@ export class Card {
     return cardElement;
   }
 
-  _toUpperCase() {
-    //upper first letter
-    return this._title.slice(0, 1).toUpperCase() + this._title.slice(1);;
+  //upper first letter
+  _toUpperCase(text) {
+    return text.slice(0, 1).toUpperCase() + text.slice(1);;
   }
 
   //remove card
@@ -55,7 +55,7 @@ export class Card {
     //get template card
     this._element = this._getTemplate();
     //set variables card
-    this._element.querySelector(this._titleSelector).textContent = this._toUpperCase();
+    this._element.querySelector(this._titleSelector).textContent = this._toUpperCase(this._title);
     this._element.querySelector(this._imageSelector).style.backgroundImage = `url(${this._image})`;
     //set event listeners card
     this._setEventListeners();

@@ -1,11 +1,9 @@
-export class Popup {
+export default class Popup {
   //constructor for the "Popup" class
-  constructor(popupSelector, config) {
-    this._popupSelector = popupSelector;
+  constructor(selector, config) {
+    this._popupSelector = selector;
     this._popup = document.querySelector(this._popupSelector);
 
-    this._form = this._popup.querySelector(config.formSelector);
-    this._popupImgClass = config.popupImgClass;
     this._closeButtonClass = config.closeButtonClass
     this._popupOpenedClass = config.popupOpenedClass
 
@@ -21,9 +19,6 @@ export class Popup {
 
   //close popup
   close() {
-    if (!this._popup.classList.contains(this._popupImgClass)){
-      this._form.reset();
-    }
     this._removeEventListeners();
     this._popup.classList.remove(this._popupOpenedClass);
   }

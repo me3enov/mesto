@@ -7,8 +7,6 @@ import {
   cardsListSelector,
   editButtonItem,
   addButtonItem,
-  profileNameItem,
-  profileJobItem,
   formPlaceEditItem,
   formElementNameItem,
   formElementJobItem,
@@ -18,29 +16,54 @@ import {
   configValidator,
   configCard,
   configPopup,
+  configPopupWithForm,
   configPopupWithImage,
   configUserInfo}
 from '../utils/constants.js';
 import {UserInfo} from '../components/UserInfo.js';
 import {Card} from '../components/Card.js';
 import {Section} from '../components/Section.js';
-import {Popup} from '../components/Popup.js';
+import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {FormValidator} from '../components/FormValidator.js';
 //IMPORT MODULES END
 
 //FUNCTION START
+//userInfo init
 const userInfo = new UserInfo(configUserInfo);
 
-const popupEdit = new Popup(popups.popupEditSelector, configPopup);
-const popupAdd = new Popup(popups.popupAddSelector, configPopup);
-const popupImg = new PopupWithImage(popups.popupImgSelector, configPopup, configPopupWithImage);
+//popupEdit init
+const popupEdit = new PopupWithForm({
+  selector: popups.popupEditSelector,
+  config: configPopup,
+  extend: configPopupWithForm,
+  submit: () => {
+    formPlaceEditItem.addEventListener('submit', editProfile);
+  }
+});
 
+//popupAdd init
+const popupAdd = new PopupWithForm({
+  selector: popups.popupAddSelector,
+  config: configPopup,
+  extend: configPopupWithForm,
+  submit: () => {
+    formPlaceAddItem.addEventListener('submit', addCard);
+  }
+});
+
+//popupImg init
+const popupImg = new PopupWithImage({
+  selector: popups.popupImgSelector,
+  config: configPopup,
+  extend: configPopupWithImage
+});
+
+//cards init
 const cards = new Section({
   renderer: (item) => {
     const card = createCard(item);
-    const cardItem = card.generateCard();
-    cards.addItem(cardItem);
+    cards.addItem(card);
   }
 }, cardsListSelector);
 
@@ -51,31 +74,29 @@ const createCard = (item) => {
       popupImg.open(item);
     }
   });
-  return card;
+  return card.generateCard();
 }
 
 //edit profile form submit
-function editProfile (evt) {
-  evt.preventDefault();
+function editProfile () {
   //set profile values
-  profileNameItem.textContent = formElementNameItem.value.slice(0, 1).toUpperCase() + formElementNameItem.value.slice(1);
-  profileJobItem.textContent = formElementJobItem.value.slice(0, 1).toUpperCase() + formElementJobItem.value.slice(1);
-  //close popup
-  popupEdit.close();
+  const userData = {
+    name: formElementNameItem.value,
+    job: formElementJobItem.value
+  }
+  userInfo.setUserInfo(userData);
 }
 
 //add post form submit
-function addCard (evt) {
-  evt.preventDefault();
+function addCard () {
   //set cards values
   const cardData = {
     name: formElementTitleItem.value,
     link: formElementLinkItem.value
   }
   //create card
-  cards.renderItems([cardData]);
-  //close popup
-  popupAdd.close();
+  const card = createCard(cardData);
+  cards.addItem(card);
 }
 
 //INIT ALL CARDS
@@ -84,27 +105,30 @@ cards.renderItems(data);
 //LISTENER INIT START
 //call edit popup button
 editButtonItem.addEventListener('click', () => {
-  const profileData = userInfo.getUserInfo();
-  formElementNameItem.value = profileData.name;
-  formElementJobItem.value = profileData.job;
+  const userData = userInfo.getUserInfo();
+  formElementNameItem.value = userData.name;
+  formElementJobItem.value = userData.job;
   popupEdit.open();
 })
 
 //call add popup button
 addButtonItem.addEventListener('click', () => {
   popupAdd.open();
+  formEdit.clearValidation();
 })
 
-//edit profile form submit
-formPlaceEditItem.addEventListener('submit', editProfile);
-
-//add card form submit
-formPlaceAddItem.addEventListener('submit', addCard);
-//LISTENER INIT END
-
 //enable forms validation
-const formEdit = new FormValidator (formPlaceEditItem, configValidator);
+const formEdit = new FormValidator({
+  selector: formPlaceEditItem,
+  config: configValidator
+});
+
 formEdit.enableValidation(popupEdit);
-const formAdd = new FormValidator (formPlaceAddItem, configValidator);
+
+const formAdd = new FormValidator({
+  selector: formPlaceAddItem,
+  config: configValidator
+});
+
 formAdd.enableValidation(popupAdd);
 //FUNCTION END

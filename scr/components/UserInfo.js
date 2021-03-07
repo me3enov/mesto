@@ -5,6 +5,11 @@ export class UserInfo {
     this._job = document.querySelector(config.profileJobSelector);
   }
 
+  //upper first letter
+  _toUpperCase(text) {
+    return text.slice(0, 1).toUpperCase() + text.slice(1);;
+  }
+
   //get user info
   getUserInfo() {
     const profile = {
@@ -15,8 +20,8 @@ export class UserInfo {
   }
 
   //set user info
-  setUserInfo(profile) {
-    this._name.textContent = profile.name;
-    this._job.textContent = profile.job;
+  setUserInfo(userData) {
+    this._name.textContent = this._toUpperCase(userData.name);
+    this._job.textContent = this._toUpperCase(userData.job);
   }
 }

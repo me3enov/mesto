@@ -1,14 +1,15 @@
 export class FormValidator {
-  constructor (form, config) {
-    this._form = form;
+  constructor (settings) {
+    this._settings = settings;
+    this._form = this._settings.selector;
 
-    this._formSelector = config.formSelector;
-    this._inputSelector = config.inputSelector;
-    this._submitButtonSelector = config.submitButtonSelector;
-    this._inactiveButtonClass = config.inactiveButtonClass;
-    this._inputErrorClass = config.inputErrorClass;
-    this._errorClass = config.errorClass;
-    this._errorPrefix = config.errorPrefix;
+    this._formSelector = this._settings.config.formSelector;
+    this._inputSelector = this._settings.config.inputSelector;
+    this._submitButtonSelector = this._settings.config.submitButtonSelector;
+    this._inactiveButtonClass = this._settings.config.inactiveButtonClass;
+    this._inputErrorClass = this._settings.config.inputErrorClass;
+    this._errorClass = this._settings.config.errorClass;
+    this._errorPrefix = this._settings.config.errorPrefix;
   }
 
   //show validation error in input
@@ -60,7 +61,7 @@ export class FormValidator {
   }
 
   //clear validation errors
-  _clearValidation () {
+  clearValidation () {
     //array all inputs
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
     //submit button
@@ -68,12 +69,8 @@ export class FormValidator {
     //toggle submit button state
     this._toggleButtonState (this.inputList);
     //cycle for array inputs - clear validation errors in input
-    this._inputList.forEach((item) => {
-      item.classList.remove(this._inputErrorClass);
-      this._currentElement = this._form.querySelector(`#${item.id+this._errorPrefix}`);
-      this._currentElement.classList.remove(this._errorClass);
-      this._currentElement.textContent = '';
-    })
+    this._inputList.forEach(item => this._hideInputError(item));
+    this._toggleButtonState();
   }
 
   //set event listeners in inputs
@@ -93,7 +90,7 @@ export class FormValidator {
     });
     //clear validation errors
     this._form.addEventListener('reset', () => {
-      this._clearValidation();
+      this.clearValidation();
     })
   };
 

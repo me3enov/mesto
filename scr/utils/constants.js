@@ -32,16 +32,20 @@ export const configCard = {
 
 //card config for "Popup" class
 export const configPopup = {
-  formSelector: '.form',
-  popupImgClass: 'popup_place_img',
   closeButtonClass: 'popup__close-button',
   popupOpenedClass: 'popup_opened'
 };
 
-//card config for "Popup" class
+//card config for "PopupWithForm" class
+export const configPopupWithForm = {
+  formSelector: '.form',
+  formInputSelector: '.form__input'
+};
+
+//card config for "PopupWithImage" class
 export const configPopupWithImage = {
-  popup__imageSelector: '.popup__image',
-  popup__descriptionSelector: '.popup__description'
+  popupImageSelector: '.popup__image',
+  popupDescriptionSelector: '.popup__description'
 };
 
 //card config for "UserInfo" class
@@ -55,10 +59,6 @@ export const configUserInfo = {
 //buttons
 export const editButtonItem = document.querySelector('.profile__edit-button');
 export const addButtonItem = document.querySelector('.profile__add-button');
-
-//text content
-export const profileNameItem = document.querySelector('.profile__name');
-export const profileJobItem = document.querySelector('.profile__job');
 
 //edit profile
 export const formPlaceEditItem = document.querySelector('.form_place_edit');
