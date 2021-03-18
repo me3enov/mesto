@@ -1,8 +1,25 @@
+//MY ID
+export const id = {myId: ''};
+
+//API CONFIG START
+export const apiConfig = {
+  authorization: '08402336-c176-4b17-bc07-4e156c9de6bc',
+  url: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  cardsUrl: '/cards',
+  cardsLikesUrl: '/cards/likes/',
+  userAvatarUrl: '/users/me/avatar',
+  userInfoUrl: '/users/me',
+  errorText: 'Ошибка:'
+};
+//API CONFIG END
+
 //SELECTORS START
 export const popups = {
   popupEditSelector: '.popup_place_edit',
   popupAddSelector: '.popup_place_add',
-  popupImgSelector: '.popup_place_img'
+  popupImgSelector: '.popup_place_img',
+  popupConfirmSelector: '.popup_place_confirm',
+  popupAvatarSelector: '.popup_place_avatar'
 };
 export const cardsListSelector = '.gallery';
 //SELECTORS END
@@ -27,6 +44,7 @@ export const configCard = {
   imageSelector: '.card__image',
   binBtnSelector: '.card__bin',
   likeBtnSelector: '.card__like',
+  likesCountSelector: '.card__like-count',
   likedClass: 'card__like_state_liked'
 };
 
@@ -39,7 +57,8 @@ export const configPopup = {
 //card config for "PopupWithForm" class
 export const configPopupWithForm = {
   formSelector: '.form',
-  formInputSelector: '.form__input'
+  formInputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button'
 };
 
 //card config for "PopupWithImage" class
@@ -50,23 +69,26 @@ export const configPopupWithImage = {
 
 //card config for "UserInfo" class
 export const configUserInfo = {
+  profileAvatarSelector: '.profile__avatar',
   profileNameSelector: '.profile__name',
-  profileJobSelector: '.profile__job'
+  profileAboutSelector: '.profile__job'
 };
 //CONFIG FOR CLASSES END
 
 //ITEMS START
 //buttons
-export const editButtonItem = document.querySelector('.profile__edit-button');
-export const addButtonItem = document.querySelector('.profile__add-button');
+export const buttons = {
+  editProfileBtn: document.querySelector('.profile__edit-button'),
+  addCardBtn: document.querySelector('.profile__add-button'),
+  editAvatarBtn: document.querySelector('.profile__avatar')
+};
 
-//edit profile
-export const formPlaceEditItem = document.querySelector('.form_place_edit');
-export const formElementNameItem = document.querySelector('.form__input_string_name');
-export const formElementJobItem = document.querySelector('.form__input_string_job');
-
-//add card
-export const formPlaceAddItem = document.querySelector('.form_place_add');
-export const formElementTitleItem = document.querySelector('.form__input_string_title');
-export const formElementLinkItem = document.querySelector('.form__input_string_link');
+//forms
+export const forms = {
+  formPlaceEdit: document.querySelector('.form_place_edit'),
+  formElementName: document.querySelector('.form__input_string_name'),
+  formElementAbout: document.querySelector('.form__input_string_job'),
+  formPlaceAdd: document.querySelector('.form_place_add'),
+  formPlaceAvatar: document.querySelector('.form_place_avatar')
+};
 //ITEMS END

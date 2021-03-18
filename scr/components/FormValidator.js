@@ -1,5 +1,5 @@
 export class FormValidator {
-  constructor (settings) {
+  constructor(settings) {
     this._settings = settings;
     this._form = this._settings.selector;
 
@@ -13,7 +13,7 @@ export class FormValidator {
   }
 
   //show validation error in input
-  _showInputError (inputElement, errorMessage) {
+  _showInputError(inputElement, errorMessage) {
     const errorElement = this._form.querySelector(`#${inputElement.id+this._errorPrefix}`);
       inputElement.classList.add(this._inputErrorClass);
       errorElement.textContent = errorMessage;
@@ -21,7 +21,7 @@ export class FormValidator {
   };
 
   //hide validation error in input
-  _hideInputError (inputElement) {
+  _hideInputError(inputElement) {
     const errorElement = this._form.querySelector(`#${inputElement.id+this._errorPrefix}`);
       inputElement.classList.remove(this._inputErrorClass);
       errorElement.classList.remove(this._errorClass);
@@ -29,14 +29,14 @@ export class FormValidator {
   };
 
   //if invalid input return invalid form
-  _hasInvalidInput () {
+  _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     })
   }
 
   //check input
-  _checkInputValidity (inputElement) {
+  _checkInputValidity(inputElement) {
     //if not valid
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
@@ -47,7 +47,7 @@ export class FormValidator {
   };
 
   //toggle submit button state
-  _toggleButtonState () {
+  _toggleButtonState() {
     //if invalid - add inactive class & disabled state
     if(this._hasInvalidInput(this._inputList)) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
@@ -61,7 +61,7 @@ export class FormValidator {
   }
 
   //clear validation errors
-  clearValidation () {
+  clearValidation() {
     //array all inputs
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
     //submit button
@@ -73,7 +73,7 @@ export class FormValidator {
   }
 
   //set event listeners in inputs
-  _setEventListeners () {
+  _setEventListeners() {
     //array all inputs
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
     //submit button

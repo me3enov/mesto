@@ -13,7 +13,7 @@ export class Section {
   }
 
   //add item to DOM
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(element, place = 'prepend') {
+    place === 'append' ? this._container.append(element) : this._container.prepend(element);
   }
 }

@@ -14,6 +14,7 @@
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  transition: .4s;
 }
 
 @media screen and (max-width: 709px) {
@@ -37,7 +38,6 @@
 
 .profile__add-button:hover {
   opacity: .6;
-  transition: .4s;
 }
 
 .profile__add-button:focus {

@@ -14,6 +14,7 @@
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  transition: .4s;
 }
 
 .popup__close-button:hover {

@@ -2,7 +2,8 @@ export class UserInfo {
   //constructor for the "UserInfo" class
   constructor(config) {
     this._name = document.querySelector(config.profileNameSelector);
-    this._job = document.querySelector(config.profileJobSelector);
+    this._about = document.querySelector(config.profileAboutSelector);
+    this._avatar = document.querySelector(config.profileAvatarSelector)
   }
 
   //upper first letter
@@ -14,14 +15,20 @@ export class UserInfo {
   getUserInfo() {
     const profile = {
       name: this._name.textContent,
-      job: this._job.textContent
+      about: this._about.textContent
     };
     return profile;
+  }
+
+  //set user avatar
+  setUserAvatar(userData) {
+    this._avatar.style.backgroundImage = `url(${userData.avatar})`;
   }
 
   //set user info
   setUserInfo(userData) {
     this._name.textContent = this._toUpperCase(userData.name);
-    this._job.textContent = this._toUpperCase(userData.job);
+    this._about.textContent = this._toUpperCase(userData.about);
+    this.setUserAvatar(userData);
   }
 }

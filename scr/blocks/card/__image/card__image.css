@@ -21,9 +21,9 @@
   left: 0;
   opacity: 0;
   background: black;
+  transition: .4s;
 }
 
 .card__image:hover::after {
   opacity: .6;
-  transition: .4s;
 }
