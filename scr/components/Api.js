@@ -1,12 +1,20 @@
 export class Api {
   constructor(config) {
+    this._headers = {
+      authorization: config.authorization,
+      'Content-Type': 'application/json'
+    };
     this._url = config.url;
-    this._headers = config.headers;
+    this._cardsUrl = config.cardsUrl;
+    this._cardsLikesUrl = config.cardsLikesUrl;
+    this._userAvatarUrl = config.userAvatarUrl;
+    this._userInfoUrl = config.userInfoUrl;
+    this._errorText = config.errorText;
   }
 
   //get user info
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}${this._userInfoUrl}`, {
       method: 'GET',
       headers: this._headers
     })
@@ -15,7 +23,7 @@ export class Api {
 
   //get all cards
   getCards() {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}${this._cardsUrl}`, {
       method: 'GET',
       headers: this._headers
     })
@@ -29,7 +37,7 @@ export class Api {
 
   //set user info
   setUserInfo(userData) {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}${this._userInfoUrl}`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -42,7 +50,7 @@ export class Api {
 
   //set user avatar
   setUserAvatar(link) {
-    return fetch(`${this._url}/users/me/avatar`, {
+    return fetch(`${this._url}${this._userAvatarUrl}`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -54,7 +62,7 @@ export class Api {
 
   //add card
   addCard(cardData) {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}${this._cardsUrl}`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -67,7 +75,7 @@ export class Api {
 
   //remove card
   removeCard(cardData) {
-    return fetch(`${this._url}/cards/${cardData._id}`, {
+    return fetch(`${this._url}${this._cardsUrl}/${cardData._id}`, {
       method: 'DELETE',
       headers: this._headers
     })
@@ -76,7 +84,7 @@ export class Api {
 
   //like card
   likeCard(cardData) {
-    return fetch(`${this._url}/cards/likes/${cardData._id}`, {
+    return fetch(`${this._url}${this._cardsLikesUrl}${cardData._id}`, {
       method: 'PUT',
       headers: this._headers,
     })
@@ -85,7 +93,7 @@ export class Api {
 
   //unlike card
   unlikeCard(cardData) {
-    return fetch(`${this._url}/cards/likes/${cardData._id}`, {
+    return fetch(`${this._url}${this._cardsLikesUrl}${cardData._id}`, {
       method: 'DELETE',
       headers: this._headers,
     })
@@ -95,7 +103,7 @@ export class Api {
   //check response from server
   _checkServerResponse(res) {
     if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return Promise.reject(`${this._errorText} ${res.status}`);
     }
     return res.json();
   }

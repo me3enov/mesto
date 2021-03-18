@@ -5,8 +5,8 @@ export class Card {
     this._id = id;
 
     //data for the init card
-    this._item = item;
-    this._ownerId = this._item.owner._id;
+    this.item = item;
+    this._ownerId = this.item.owner._id;
     this._title = item.name;
     this._image = item.link;
 
@@ -66,8 +66,8 @@ export class Card {
 
   //set event listeners the "Card" class
   _setEventListeners() {
-    this._imageElement.addEventListener('click', () => this._handleCardClick(this._item));
-    this._likeBtnElement.addEventListener('click', () => this._handleLikeClick(this._item));
+    this._imageElement.addEventListener('click', () => this._handleCardClick(this.item));
+    this._likeBtnElement.addEventListener('click', () => this._handleLikeClick(this.item));
     this._binBtnElement.addEventListener('click', () => this._handleBinClick(this));
   }
 
@@ -101,7 +101,7 @@ export class Card {
     this._titleElement.textContent = this._toUpperCase(this._title);
     this._imageElement.style.backgroundImage = `url(${this._image})`;
     //set event listeners card
-    this.setLikes(this._item)
+    this.setLikes(this.item)
     this._checkId();
     this._setEventListeners();
 

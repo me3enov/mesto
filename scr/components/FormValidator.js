@@ -62,10 +62,6 @@ export class FormValidator {
 
   //clear validation errors
   clearValidation() {
-    //array all inputs
-    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-    //submit button
-    this._buttonElement = this._form.querySelector(this._submitButtonSelector);
     //toggle submit button state
     this._toggleButtonState();
     //cycle for array inputs - clear validation errors in input

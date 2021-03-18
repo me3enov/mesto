@@ -40,6 +40,5 @@ export default class Popup {
   //set event listeners
   setEventListeners() {
     this._popup.addEventListener('click', this._handleClickClose);
-    document.addEventListener('keydown', this._handleEscClose);
   }
 }

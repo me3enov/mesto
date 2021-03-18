@@ -30,14 +30,7 @@ import {FormValidator} from '../components/FormValidator.js';
 const userInfo = new UserInfo(configUserInfo);
 
 //api init
-const api = new Api({
-  //main url
-  url: apiConfig.url,
-  headers: {
-    authorization: apiConfig.authorization,
-    'Content-Type': 'application/json'
-  }
-});
+const api = new Api(apiConfig);
 
 //get all data init
 api.getAllData()
@@ -156,7 +149,7 @@ function addCard (cardData) {
 function removeCard (cardToRemove) {
   //saving start
   popupConfirm.renderLoading(true, 'Удаление...');
-  api.removeCard(cardToRemove._item)
+  api.removeCard(cardToRemove.item)
     .then(() => {
       //remove object card
       cardToRemove.removeCard();
@@ -249,20 +242,20 @@ const formEdit = new FormValidator({
   selector: forms.formPlaceEdit,
   config: configValidator
 });
-formEdit.enableValidation(popupEdit);
+formEdit.enableValidation();
 
 //enable validation add card form
 const formAdd = new FormValidator({
   selector: forms.formPlaceAdd,
   config: configValidator
 });
-formAdd.enableValidation(popupAdd);
+formAdd.enableValidation();
 
 //enable validation edit avatar form
 const formAvatar = new FormValidator({
   selector: forms.formPlaceAvatar,
   config: configValidator
 });
-formAvatar.enableValidation(popupAvatar);
+formAvatar.enableValidation();
 //ENABLE FORMS VALIDATION END
 //FUNCTION END

@@ -1,7 +1,8 @@
 //MY ID
 export const id = {myId: ''};
 
-//API CONFIG START
+//CONFIG FOR CLASSES START
+//api config for class Api
 export const apiConfig = {
   authorization: '08402336-c176-4b17-bc07-4e156c9de6bc',
   url: 'https://mesto.nomoreparties.co/v1/cohort-21',
@@ -11,20 +12,7 @@ export const apiConfig = {
   userInfoUrl: '/users/me',
   errorText: 'Ошибка:'
 };
-//API CONFIG END
 
-//SELECTORS START
-export const popups = {
-  popupEditSelector: '.popup_place_edit',
-  popupAddSelector: '.popup_place_add',
-  popupImgSelector: '.popup_place_img',
-  popupConfirmSelector: '.popup_place_confirm',
-  popupAvatarSelector: '.popup_place_avatar'
-};
-export const cardsListSelector = '.gallery';
-//SELECTORS END
-
-//CONFIG FOR CLASSES START
 //validation config for class FormValidator
 export const configValidator = {
   formSelector: '.form',
@@ -76,11 +64,16 @@ export const configUserInfo = {
 //CONFIG FOR CLASSES END
 
 //ITEMS START
-//buttons
-export const buttons = {
-  editProfileBtn: document.querySelector('.profile__edit-button'),
-  addCardBtn: document.querySelector('.profile__add-button'),
-  editAvatarBtn: document.querySelector('.profile__avatar')
+//container for the cards
+export const cardsListSelector = '.gallery';
+
+//popups
+export const popups = {
+  popupEditSelector: '.popup_place_edit',
+  popupAddSelector: '.popup_place_add',
+  popupImgSelector: '.popup_place_img',
+  popupConfirmSelector: '.popup_place_confirm',
+  popupAvatarSelector: '.popup_place_avatar'
 };
 
 //forms
@@ -90,5 +83,12 @@ export const forms = {
   formElementAbout: document.querySelector('.form__input_string_job'),
   formPlaceAdd: document.querySelector('.form_place_add'),
   formPlaceAvatar: document.querySelector('.form_place_avatar')
+};
+
+//buttons
+export const buttons = {
+  editProfileBtn: document.querySelector('.profile__edit-button'),
+  addCardBtn: document.querySelector('.profile__add-button'),
+  editAvatarBtn: document.querySelector('.profile__avatar')
 };
 //ITEMS END
